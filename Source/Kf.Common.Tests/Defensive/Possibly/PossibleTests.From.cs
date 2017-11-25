@@ -7,8 +7,10 @@ namespace Kf.Common.Tests.Defensive.Possibly
 {
     public partial class PossibleTests
     {
-        private static IEnumerable<object[]> ObjectValues() {
-            return new List<object[]> {
+        private static IEnumerable<object[]> ObjectValues()
+        {
+            return new List<object[]>
+            {
                 new object[] {
                     null, false, null
                 },
@@ -21,12 +23,22 @@ namespace Kf.Common.Tests.Defensive.Possibly
                 new object[] {
                     0, false, new Func<object, bool>(v => (int)v != 0)
                 },
-            };           
+                new object[] {
+                    0, false, new Func<object, bool>(v => (int)v > 0)
+                },
+                new object[] {
+                    -1, false, new Func<object, bool>(v => (int)v > 0)
+                },
+                new object[] {
+                    1, true, new Func<object, bool>(v => (int)v > 0)
+                },
+            };
         }
 
         [Theory,
          MemberData(nameof(ObjectValues))]
-        public void From_produces_correct_value_object(object value, bool expectedHasValue, Func<object, bool> hasValueDeterminator) {
+        public void From_produces_correct_value_object(object value, bool expectedHasValue, Func<object, bool> hasValueDeterminator)
+        {
             var sut = Possible.From(value, hasValueDeterminator);
             Assert.Equal(expectedHasValue, sut.HasValue);
         }
