@@ -24,7 +24,7 @@ namespace Kf.Common.Defensive.Possibly
             => _value;
 
         public override TConcrete GetValue(TConcrete defaultValue)
-            => defaultValue;
+            => _value;
 
         public override IEnumerable<TConcrete> AsEnumerable()
             => new[] { _value };
