@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace Kf.Common.Defensive.Possibly
 {
@@ -10,6 +11,26 @@ namespace Kf.Common.Defensive.Possibly
             => new ConcreteValue<TConcrete>(value);
         public static IPossible<TConcrete> NoValue<TConcrete>()
             => new NoValue<TConcrete>();
+
+        public static IPossible<TConcrete> From<TConcrete>(
+            TConcrete value, Func<TConcrete, bool> hasValueDeterminator) {
+            if (hasValueDeterminator == null)
+                return From(value, o => o != null);
+
+            return hasValueDeterminator(value) 
+                ? Value(value) 
+                : NoValue<TConcrete>();
+        }
+
+        public static IPossible<string> From(
+            string value,
+            StringValueParserStrategy stringValueParserStrategy = StringValueParserStrategy.NullEmptyOrWhitespaceIsNoValue
+        ) {
+            if (stringValueParserStrategy == StringValueParserStrategy.NullOrEmptyIsNoValue)
+                return From(value, s => !String.IsNullOrEmpty(s));
+
+            return From(value, s => !String.IsNullOrWhiteSpace(s));
+        }
     }
 
     [DebuggerDisplay("{HasValue: " + nameof(HasValue) + "}")]
