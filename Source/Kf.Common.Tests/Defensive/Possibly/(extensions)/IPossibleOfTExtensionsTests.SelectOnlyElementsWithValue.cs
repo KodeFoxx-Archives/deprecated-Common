@@ -40,7 +40,7 @@ namespace Kf.Common.Tests.Defensive.Possibly._extensions_
         [Theory,
          MemberData(nameof(Sequences))]
         public void SelectOnlyWithValue_produces_correct_outcome(IPossible<int>[] input, int[] expectedOutcome, int expectedLength) {
-            var sut = input.SelectOnlyElementsWithValue().ToList();
+            var sut = input.SelectElementsWithValue().ToList();
             Assert.NotNull(sut);
             Assert.Equal(expectedLength, sut.Count);
             Assert.Equal(expectedOutcome.ToList(), sut);
