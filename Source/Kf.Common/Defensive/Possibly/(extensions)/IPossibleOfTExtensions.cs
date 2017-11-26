@@ -22,6 +22,12 @@ namespace Kf.Common.Defensive.Possibly
                     .SelectElementsWithValue()
                     .Select(mapping)
                     .SelectElementsWithValue()
-                : Enumerable.Empty<TResult>();        
+                : Enumerable.Empty<TResult>();
+
+        public static IPossible<TConcrete> FirstOrNoValue<TConcrete>(
+            this IEnumerable<IPossible<TConcrete>> sequence
+        ) => sequence != null
+                ? sequence.FirstOrDefault() ?? Possible.NoValue<TConcrete>()
+                : Possible.NoValue<TConcrete>();
     }
 }

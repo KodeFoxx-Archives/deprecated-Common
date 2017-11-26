@@ -70,6 +70,9 @@ namespace Kf.Common.Defensive.Possibly.Examples
             //   method on it.
             var mappedElementsWithValue = collectionOfPossibleInts
                 .MapElementsWithValue(i => i.ToString().ToPossible());
+            // - FirstOrNoValue is the replacement for Linq's FirstOrDefault
+            var firstOrNoValueResult = collectionOfPossibleInts
+                .FirstOrNoValue();
         }
     }
 }
