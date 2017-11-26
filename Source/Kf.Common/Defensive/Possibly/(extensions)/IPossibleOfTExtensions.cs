@@ -5,10 +5,7 @@ using System.Linq;
 namespace Kf.Common.Defensive.Possibly
 {
     public static class IPossibleOfTExtensions
-    {
-        /// <summary>
-        /// Only returns those Possible objects that contain a value.
-        /// </summary>        
+    {        
         public static IEnumerable<TConcrete> SelectElementsWithValue<TConcrete>(
             this IEnumerable<IPossible<TConcrete>> sequence
         ) => sequence != null 
