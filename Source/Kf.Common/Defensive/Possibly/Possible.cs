@@ -14,7 +14,7 @@ namespace Kf.Common.Defensive.Possibly
             => new NoValue<TConcrete>();
 
         public static IPossible<TConcrete> From<TConcrete>(
-            TConcrete value, Func<TConcrete, bool> hasValueDeterminator) {
+            TConcrete value, Func<TConcrete, bool> hasValueDeterminator = null) {
             if (hasValueDeterminator == null)
                 return From(value, o => o != null);
 
