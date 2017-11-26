@@ -15,7 +15,7 @@ namespace Kf.Common.Defensive.Possibly
                 ? sequence.SelectMany(x => x.AsEnumerable())
                 : Enumerable.Empty<TConcrete>();
 
-        public static IEnumerable<TResult> Map<TConcrete, TResult>(
+        public static IEnumerable<TResult> MapElementsWithValue<TConcrete, TResult>(
             this IEnumerable<TConcrete> sequence, Func<TConcrete, IPossible<TResult>> mapping
         ) => sequence != null
                 ? sequence.Select(mapping).SelectOnlyElementsWithValue()
