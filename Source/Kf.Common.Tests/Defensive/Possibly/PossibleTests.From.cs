@@ -61,6 +61,7 @@ namespace Kf.Common.Tests.Defensive.Possibly
                 new object[] {
                     "value", true, StringValueParserStrategy.NullEmptyOrWhitespaceIsNoValue
                 },
+
                 new object[] {
                     null, false, StringValueParserStrategy.NullOrEmptyIsNoValue
                 },
@@ -80,11 +81,28 @@ namespace Kf.Common.Tests.Defensive.Possibly
         }
 
         [Theory,
-         MemberData(nameof(StringValues))]
-        public void From_string_produces_correct_value_object(string value, bool expectedHasValue, StringValueParserStrategy stringValueParserStrategy)
+         MemberData(nameof(NullableValues))]
+        public void From_nullable_produces_correct_value_object(int? value, bool expectedHasValue)
         {
-            var sut = Possible.From(value, stringValueParserStrategy);
+            var sut = Possible.From(value);
             Assert.Equal(expectedHasValue, sut.HasValue);
+            if(sut.HasValue)
+                Assert.Equal(value.Value, sut.GetValue(-1));
+        }
+
+        private static IEnumerable<object[]> NullableValues()
+        {
+            return new List<object[]> {
+                new object[] {
+                    null, false
+                },
+                new object[] {
+                    0, true
+                },
+                new object[] {
+                    1, true
+                },
+            };
         }
     }
 }

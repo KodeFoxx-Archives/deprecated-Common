@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 namespace Kf.Common.Defensive.Possibly
@@ -31,6 +32,12 @@ namespace Kf.Common.Defensive.Possibly
 
             return From(value, s => !String.IsNullOrWhiteSpace(s));
         }
+
+        public static IPossible<TConcrete> From<TConcrete>(TConcrete? value)
+            where TConcrete : struct
+            => value.HasValue
+                ? Value(value.Value)
+                : NoValue<TConcrete>();
     }
 
     [DebuggerDisplay("{HasValue: " + nameof(HasValue) + "}")]
