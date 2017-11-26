@@ -58,7 +58,7 @@ namespace Kf.Common.Defensive.Possibly.Examples
 
             // Extension methods provide options to be more flexible with
             // collections of possible types
-            var collectionOfPossibleInts = new[] {1, 2, 3, 4, 5}.Select(i => i.ToPossible());
+            var collectionOfPossibleInts = new[] {-2, -1, 0, 1, 2, 3, 4, 5}.Select(i => i.ToPossible());
             // - SelectElementsWithValue will only return the elements with a value
             var sumOfelementsWithValue = collectionOfPossibleInts
                 .SelectElementsWithValue()
@@ -80,7 +80,7 @@ namespace Kf.Common.Defensive.Possibly.Examples
                     .SelectElementsWithValue()
                     .ToList()
                 );
-            Console.WriteLine(intsLargerOrEqualThanZeroAsString);
+            Console.WriteLine($"{intsLargerOrEqualThanZeroAsString}.");
 
             Console.ReadLine();
         }
