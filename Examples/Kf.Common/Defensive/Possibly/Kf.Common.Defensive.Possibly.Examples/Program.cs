@@ -73,6 +73,16 @@ namespace Kf.Common.Defensive.Possibly.Examples
             // - FirstOrNoValue is the replacement for Linq's FirstOrDefault
             var firstOrNoValueResult = collectionOfPossibleInts
                 .FirstOrNoValue();
+            // - Where is the replacement for Linq'q Where
+            var intsLargerOrEqualThanZeroAsString = String.Join(", ", 
+                collectionOfPossibleInts
+                    .Where(i => i >= 0)
+                    .SelectElementsWithValue()
+                    .ToList()
+                );
+            Console.WriteLine(intsLargerOrEqualThanZeroAsString);
+
+            Console.ReadLine();
         }
     }
 }
