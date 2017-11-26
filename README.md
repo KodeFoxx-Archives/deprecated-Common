@@ -5,6 +5,9 @@
 Because I don't like writing things twice: common functions, utilities, helpers, classes and patterns used in KodeFoxx projects.<br/>
 For **issues, errors or feature requests**, please **create <a href="https://github.com/KodeFoxx/Common/issues/new">a message here</a>**
 
+## Documentation
+Refer to the [wikipage for documentation](https://github.com/KodeFoxx/Common/wiki) and make sure to inspect the **unit tests** as well as the **Examples** folder for coded examples.
+
 ## Downloads & releases: 
   - [Recenste stabiele release](https://github.com/KodeFoxx/Common/releases/latest)
   - [Alle releases](https://github.com/KodeFoxx/Common/releases/)
