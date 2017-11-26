@@ -21,6 +21,15 @@ namespace Kf.Common.Defensive.Possibly
                     .SelectElementsWithValue()
                 : Enumerable.Empty<TResult>();
 
+        public static IEnumerable<IPossible<TConcrete>> Where<TConcrete>(
+            this IEnumerable<IPossible<TConcrete>> sequence, Func<TConcrete, bool> filter
+        ) => sequence != null
+            ? sequence
+                .SelectElementsWithValue()
+                .Where(filter)
+                .Select(v => v.ToPossible())
+            : Enumerable.Empty<IPossible<TConcrete>>();
+
         public static IPossible<TConcrete> FirstOrNoValue<TConcrete>(
             this IEnumerable<IPossible<TConcrete>> sequence
         ) => sequence != null
