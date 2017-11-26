@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Kf.Common.Defensive.Possibly;
 using Xunit;
 
-namespace Kf.Common.Tests.Defensive.Possibly._extensions_
+namespace Kf.Common.Tests.Defensive.Possibly
 {
     public partial class IPossibleOfTExtensionsTests
     {

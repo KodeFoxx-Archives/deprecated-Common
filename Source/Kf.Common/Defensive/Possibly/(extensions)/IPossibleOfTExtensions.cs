@@ -22,11 +22,6 @@ namespace Kf.Common.Defensive.Possibly
                     .SelectElementsWithValue()
                     .Select(mapping)
                     .SelectElementsWithValue()
-                : Enumerable.Empty<TResult>();
-
-
-        //=> sequence != null
-        //    ? sequence.SelectElementsWithValue().Select(x => mapping(x))
-        //    : Enumerable.Empty<TResult>();
+                : Enumerable.Empty<TResult>();        
     }
 }
