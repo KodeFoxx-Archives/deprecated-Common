@@ -11,10 +11,14 @@ namespace Kf.Common.Defensive.Possibly
         /// </summary>        
         public static IEnumerable<TConcrete> SelectOnlyElementsWithValue<TConcrete>(
             this IEnumerable<IPossible<TConcrete>> sequence
-        ) => sequence.SelectMany(x => x.AsEnumerable());
+        ) => sequence != null 
+                ? sequence.SelectMany(x => x.AsEnumerable())
+                : Enumerable.Empty<TConcrete>();
 
         public static IEnumerable<TResult> Map<TConcrete, TResult>(
             this IEnumerable<TConcrete> sequence, Func<TConcrete, IPossible<TResult>> mapping
-        ) => sequence.Select(mapping).SelectOnlyElementsWithValue();
+        ) => sequence != null
+                ? sequence.Select(mapping).SelectOnlyElementsWithValue()
+                : Enumerable.Empty<TResult>();
     }
 }
