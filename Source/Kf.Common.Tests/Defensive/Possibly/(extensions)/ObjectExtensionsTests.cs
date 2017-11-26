@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Kf.Common.Defensive.Possibly;
 using Xunit;
 
-namespace Kf.Common.Tests.Defensive.Possibly._extensions_
+namespace Kf.Common.Tests.Defensive.Possibly
 {
     public class ObjectExtensionsTests
     {

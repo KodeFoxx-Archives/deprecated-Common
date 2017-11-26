@@ -81,13 +81,11 @@ namespace Kf.Common.Tests.Defensive.Possibly
         }
 
         [Theory,
-         MemberData(nameof(NullableValues))]
-        public void From_nullable_produces_correct_value_object(int? value, bool expectedHasValue)
+         MemberData(nameof(StringValues))]
+        public void From_string_produces_correct_value_object(string value, bool expectedHasValue, StringValueParserStrategy stringValueParserStrategy)
         {
-            var sut = Possible.From(value);
-            Assert.Equal(expectedHasValue, sut.HasValue);
-            if(sut.HasValue)
-                Assert.Equal(value.Value, sut.GetValue(-1));
+            var sut = Possible.From(value, stringValueParserStrategy);
+            Assert.Equal(expectedHasValue, sut.HasValue);            
         }
 
         private static IEnumerable<object[]> NullableValues()
@@ -103,6 +101,16 @@ namespace Kf.Common.Tests.Defensive.Possibly
                     1, true
                 },
             };
+        }
+
+        [Theory,
+         MemberData(nameof(NullableValues))]
+        public void From_nullable_produces_correct_value_object(int? value, bool expectedHasValue)
+        {
+            var sut = Possible.From(value);
+            Assert.Equal(expectedHasValue, sut.HasValue);
+            if (sut.HasValue)
+                Assert.Equal(value.Value, sut.GetValue(-1));
         }
     }
 }

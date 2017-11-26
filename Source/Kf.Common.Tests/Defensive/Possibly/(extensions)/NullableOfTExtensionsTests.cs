@@ -2,7 +2,7 @@
 using Kf.Common.Defensive.Possibly;
 using Xunit;
 
-namespace Kf.Common.Tests.Defensive.Possibly._extensions_
+namespace Kf.Common.Tests.Defensive.Possibly
 {
     public class NullableOfTExtensionsTests
     {
@@ -10,7 +10,7 @@ namespace Kf.Common.Tests.Defensive.Possibly._extensions_
          MemberData(nameof(NullableValues))]
         public void From_nullable_produces_correct_value_object(int? value, bool expectedHasValue)
         {
-            var sut = NullableOfTExtensions.ToPossible(value);
+            var sut = value.ToPossible();
             Assert.Equal(expectedHasValue, sut.HasValue);
             if (sut.HasValue)
                 Assert.Equal(value.Value, sut.GetValue(-1));
