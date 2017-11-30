@@ -8,7 +8,7 @@ namespace Kf.Common.Tests.Comparison.Ranges
     {
         [Fact]
         public void Build_without_options_yields_minimum_and_maximum_included() {
-            var sut = RangeComparisonOptions.New().Build();
+            RangeComparisonOptions sut = RangeComparisonOptions.Create();
             Assert.True(sut.IsMinimumIncluded);
             Assert.True(sut.IsMaximumIncluded);
         }
@@ -17,38 +17,38 @@ namespace Kf.Common.Tests.Comparison.Ranges
             return new List<object[]> {
                 new object[] {
                     "Default build",
-                    RangeComparisonOptions.New(),
+                    RangeComparisonOptions.Create(),
                     true, true,
                 },
                 new object[] {
                     "Minimum included, Maximum excluded",
-                    RangeComparisonOptions.New()
+                    RangeComparisonOptions.Create()
                         .WithMaximumExcluded(),
                     true, false,
                 },
                 new object[] {
                     "Minimum included, Maximum excluded",
-                    RangeComparisonOptions.New()
+                    RangeComparisonOptions.Create()
                         .WithMinimumIncluded()
                         .WithMaximumExcluded(),
                     true, false,
                 },
                 new object[] {
                     "Minimum excluded, Maximum excluded",
-                    RangeComparisonOptions.New()
+                    RangeComparisonOptions.Create()
                         .WithMinimumExcluded()
                         .WithMaximumExcluded(),
                     false, false,
                 },
                 new object[] {
                     "Minimum excluded, Maximum included",
-                    RangeComparisonOptions.New()
+                    RangeComparisonOptions.Create()
                         .WithMinimumExcluded(),
                     false, true,
                 },
                 new object[] {
                     "Minimum excluded, Maximum included",
-                    RangeComparisonOptions.New()
+                    RangeComparisonOptions.Create()
                         .WithMaximumIncluded()
                         .WithMinimumExcluded(),
                     false, true,
@@ -58,11 +58,11 @@ namespace Kf.Common.Tests.Comparison.Ranges
 
         [Theory,
          MemberData(nameof(BuildScenarios))]
-        public void Build_with_options(string scenario, RangeComparsionOptionsBuilder sut, 
-            bool expectedMinimumIncluded, bool expectedMaximumIncluded)
-        {
-            Assert.Equal(expectedMinimumIncluded, sut.Build().IsMinimumIncluded);
-            Assert.Equal(expectedMaximumIncluded, sut.Build().IsMaximumIncluded);
+        public void Build_with_options(string scenario, RangeComparisonOptionsBuilder builder, 
+            bool expectedMinimumIncluded, bool expectedMaximumIncluded) {
+            RangeComparisonOptions sut = builder;
+            Assert.Equal(expectedMinimumIncluded, sut.IsMinimumIncluded);
+            Assert.Equal(expectedMaximumIncluded, sut.IsMaximumIncluded);
         }
     }
 }

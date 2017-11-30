@@ -2,7 +2,7 @@
 {
     public sealed class RangeComparisonOptions
     {
-        public static RangeComparsionOptionsBuilder New() => new RangeComparsionOptionsBuilder();
+        public static RangeComparisonOptionsBuilder Create() => new RangeComparisonOptionsBuilder();
 
         /// <summary>
         /// Determines whether the minimum value is included in the comparison.

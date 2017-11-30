@@ -32,12 +32,11 @@ namespace Kf.Common.Comparison.Ranges
         {
             Minimum = minimum;
             Maximum = maximum;
-            RangeComparisonOptions = 
-                rangeComparisonOptions 
-                ?? RangeComparisonOptions.New()
+            RangeComparisonOptions =
+                rangeComparisonOptions
+                ?? RangeComparisonOptions.Create()
                     .WithMinimumIncluded()
-                    .WithMaximumIncluded()
-                    .Build();
+                    .WithMaximumIncluded();
         }
 
         /// <summary>
