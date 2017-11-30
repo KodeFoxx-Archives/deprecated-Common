@@ -1,41 +1,25 @@
 ﻿using System;
+using Kf.Common.Defensive.BuilderPattern;
 
 namespace Kf.Common.Comparison.Ranges
 {
-    public sealed class RangeComparisonOptionsBuilder
-    {
-        private bool _isMinimumIncluded = true;
-        private bool _isMaximumIncluded = true;
-
+    public sealed class RangeComparisonOptionsBuilder 
+        : Builder<RangeComparisonOptions, RangeComparisonOptionsBuilder>
+    {        
         public static implicit operator RangeComparisonOptions(
             RangeComparisonOptionsBuilder rangeComparisonOptionsBuilder)
-            => new RangeComparisonOptions(
-                    rangeComparisonOptionsBuilder._isMinimumIncluded, 
-                    rangeComparisonOptionsBuilder._isMaximumIncluded
-               );        
+            => rangeComparisonOptionsBuilder.Build();
 
         public RangeComparisonOptionsBuilder WithMinimumIncluded()
-        {
-            _isMinimumIncluded = true;
-            return this;
-        }
+            => With(x => x.IsMinimumIncluded, true);
 
         public RangeComparisonOptionsBuilder WithMaximumIncluded()
-        {
-            _isMaximumIncluded = true;
-            return this;
-        }
+            => With(x => x.IsMaximumIncluded, true);
 
         public RangeComparisonOptionsBuilder WithMinimumExcluded()
-        {
-            _isMinimumIncluded = false;
-            return this;
-        }
+            => With(x => x.IsMinimumIncluded, false);
 
         public RangeComparisonOptionsBuilder WithMaximumExcluded()
-        {
-            _isMaximumIncluded = false;
-            return this;
-        }
+            => With(x => x.IsMaximumIncluded, false);
     }
 }

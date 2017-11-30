@@ -1,4 +1,6 @@
-﻿namespace Kf.Common.Comparison.Ranges
+﻿using Kf.Common.Defensive.BuilderPattern;
+
+namespace Kf.Common.Comparison.Ranges
 {
     public sealed class RangeComparisonOptions
     {
@@ -7,16 +9,17 @@
         /// <summary>
         /// Determines whether the minimum value is included in the comparison.
         /// </summary>
-        public bool IsMinimumIncluded { get; }
+        public bool IsMinimumIncluded { get; private set; }
 
         /// <summary>
         /// Determines whether the maximum value is included in the comparison.
         /// </summary>
-        public bool IsMaximumIncluded { get; }
+        public bool IsMaximumIncluded { get; private set; }
 
-        internal RangeComparisonOptions(bool isMinimumIncluded = true, bool isMaximumIncluded = true) {
+        internal RangeComparisonOptions(bool isMinimumIncluded, bool isMaximumIncluded) {
             IsMinimumIncluded = isMinimumIncluded;
             IsMaximumIncluded = isMaximumIncluded;
-        }        
+        }
+        private RangeComparisonOptions() : this(true, true) { }
     }
 }
