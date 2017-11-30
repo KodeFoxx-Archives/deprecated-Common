@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 
 namespace Kf.Common.Defensive.Possibly
-{    
+{
+    /// <summary>
+    /// Defines a contract for an object that might possibly hold a value of <typeparamref name="TConcrete"/>, or not.
+    /// </summary>    
     public interface IPossible<TConcrete> : IPossiblyHaveAValue
     {
         /// <summary>
@@ -14,14 +17,14 @@ namespace Kf.Common.Defensive.Possibly
         /// <summary>
         /// Maps the value, if present, to another type.
         /// </summary>
-        /// <typeparam name="TResult">The type to map the TConcrete value to.</typeparam>
+        /// <typeparam name="TResult">The type to map the <typeparamref name="TConcrete"/> value to.</typeparam>
         /// <param name="mapping">The logic to map an object of TConcrete to TResult.</param>        
         IPossible<TResult> Map<TResult>(Func<TConcrete, TResult> mapping);
 
         /// <summary>
         /// Gets the value if present, otherwise calls upon the defaultValueProvider function to provide one.
         /// </summary>
-        /// <param name="defaultValueProvider">The logic to provide a default TConcrete value.</param>        
+        /// <param name="defaultValueProvider">The logic to provide a default <typeparamref name="TConcrete"/> value.</param>        
         TConcrete GetValue(Func<TConcrete> defaultValueProvider);
 
         /// <summary>
@@ -31,7 +34,7 @@ namespace Kf.Common.Defensive.Possibly
         TConcrete GetValue(TConcrete defaultValue);
 
         /// <summary>
-        /// Returns an enumerable sequence of 1 or more TConcrete values if present, otherwise returns an empty sequence of TConcrete.
+        /// Returns an enumerable sequence of 1 or more <typeparamref name="TConcrete"/> values if present, otherwise returns an empty sequence of <typeparamref name="TConcrete"/>.
         /// </summary>
         IEnumerable<TConcrete> AsEnumerable();
     }
