@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Kf.Common\Kf.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Defensive\BuilderPattern\" />
+  </ItemGroup>
+
 </Project>
