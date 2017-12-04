@@ -11,7 +11,7 @@ namespace Kf.Common.Defensive.BuilderPattern
         where TBuilder : Builder<TObject, TBuilder>
         where TObject : class
     {
-        private readonly Dictionary<PropertyInfo, object> _values = new Dictionary<PropertyInfo, object>();        
+        protected readonly Dictionary<PropertyInfo, object> _values = new Dictionary<PropertyInfo, object>();        
 
         public virtual TObject Build() {
             var @object = GetInsance();

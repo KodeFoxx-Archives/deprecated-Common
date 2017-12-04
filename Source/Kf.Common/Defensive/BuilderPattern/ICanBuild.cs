@@ -8,6 +8,6 @@ namespace Kf.Common.Defensive.BuilderPattern
     public interface ICanBuild        
     {
         bool CanBuild();
-        List<string> GetBuildErrors();
+        IEnumerable<string> GetBuildErrors();
     }
 }

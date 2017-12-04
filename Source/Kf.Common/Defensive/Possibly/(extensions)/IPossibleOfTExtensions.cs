@@ -35,5 +35,11 @@ namespace Kf.Common.Defensive.Possibly
         ) => sequence != null
                 ? sequence.FirstOrDefault() ?? Possible.NoValue<TConcrete>()
                 : Possible.NoValue<TConcrete>();
+
+        public static IPossible<TConcrete> FirstOrNoValue<TConcrete>(
+            this IEnumerable<TConcrete> sequence
+        ) => sequence != null
+            ? sequence.FirstOrDefault().ToPossible()
+            : Possible.NoValue<TConcrete>();
     }
 }
