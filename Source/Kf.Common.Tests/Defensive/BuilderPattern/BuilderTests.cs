@@ -38,7 +38,7 @@ namespace Kf.Common.Tests.Defensive.BuilderPattern
         public string String { get; set; }
         public int ReadOnlyInt { get; }
         public long PrivateSetterInt64 { get; private set; }
-
+        
         private FakeObject() { } // needs to be provided
     }
 
