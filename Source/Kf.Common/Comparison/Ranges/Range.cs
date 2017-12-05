@@ -10,17 +10,17 @@ namespace Kf.Common.Comparison.Ranges
         /// <summary>
         /// The minimum value of the range.
         /// </summary>
-        public T Minimum { get; }
+        public T Minimum { get; private set; }
 
         /// <summary>
         /// The maximul value of the range.
         /// </summary>
-        public T Maximum { get; }
+        public T Maximum { get; private set; }
 
         /// <summary>
         /// The options used to see whether a value is in a given range.
         /// </summary>
-        public RangeComparisonOptions RangeComparisonOptions { get; }
+        public RangeComparisonOptions RangeComparisonOptions { get; private set; }
 
         /// <summary>
         /// Creates a new <see cref="Range{T}"/> object.
@@ -28,7 +28,7 @@ namespace Kf.Common.Comparison.Ranges
         /// <param name="minimum">The minimum value.</param>
         /// <param name="maximum">The maximum value</param>
         /// <param name="rangeComparisonOptions">The comparer options, where the default included both minimum and maximum.</param>
-        public Range(T minimum, T maximum, RangeComparisonOptions rangeComparisonOptions = null)
+        protected Range(T minimum, T maximum, RangeComparisonOptions rangeComparisonOptions = null)
         {
             Minimum = minimum;
             Maximum = maximum;

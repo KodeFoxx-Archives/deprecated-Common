@@ -14,9 +14,8 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
             );
 
         [Fact]
-        public void IsInRange_With_Value_In_Range_Returns_True()
-        {
-            IRange<short> range = new Int16Range(0, 100);
+        public void IsInRange_With_Value_In_Range_Returns_True() {
+            IRange<short> range = 0.ToInt16Range(100);
             var sut = new CompareInt16Range();
             Assert.True(sut.IsInRange(10, range));
         }
@@ -24,7 +23,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_In_Range_On_Edge_With_Minimum_Excluded_Returns_True()
         {
-            IRange<short> range = new Int16Range(0, 100, RangeComparisonOptions.Create().WithMinimumExcluded());
+            IRange<short> range = 0.ToInt16Range(100, RangeComparisonOptions.Create().WithMinimumExcluded());
             var sut = new CompareInt16Range();
             Assert.True(sut.IsInRange(1, range));            
         }
@@ -32,7 +31,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_In_Range_On_Edge_With_Maximum_Excluded_Returns_True()
         {                        
-            IRange<short> range = new Int16Range(0, 100, RangeComparisonOptions.Create().WithMaximumExcluded());
+            IRange<short> range = 0.ToInt16Range(100, RangeComparisonOptions.Create().WithMaximumExcluded());
             var sut = new CompareInt16Range();
             Assert.True(sut.IsInRange(99, range));            
         }
@@ -40,15 +39,14 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_In_Range_On_Edge_Returns_True()
         {
-            IRange<short> range = new Int16Range(0, 100);
+            IRange<short> range = 0.ToInt16Range(100);
             var sut = new CompareInt16Range();
             Assert.True(sut.IsInRange(0, range));                       
         }
 
         [Fact]
-        public void IsInRange_With_Value_Not_In_Range_Returns_False()
-        {
-            IRange<short> range = new Int16Range(0, 100);
+        public void IsInRange_With_Value_Not_In_Range_Returns_False() {
+            IRange<short> range = 0.ToInt16Range(100);
             var sut = new CompareInt16Range();
             Assert.False(sut.IsInRange(-5, range));            
         }
@@ -56,7 +54,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_Not_In_Range_On_Edge_With_Minimum_Excluded_Returns_False()
         {            
-            IRange<short> range = new Int16Range(0, 100, RangeComparisonOptions.Create().WithMinimumExcluded());
+            IRange<short> range = 0.ToInt16Range(100, RangeComparisonOptions.Create().WithMinimumExcluded());
             var sut = new CompareInt16Range();
             Assert.False(sut.IsInRange(0, range));
         }
@@ -64,7 +62,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_Not_In_Range_On_Edge_With_Maximum_Excluded_Returns_False()
         {
-            IRange<short> range = new Int16Range(0, 100, RangeComparisonOptions.Create().WithMaximumExcluded());
+            IRange<short> range = 0.ToInt16Range(100, RangeComparisonOptions.Create().WithMaximumExcluded());
             var sut = new CompareInt16Range();
             Assert.False(sut.IsInRange(100, range));            
         }
@@ -72,7 +70,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_Not_In_Range_On_Edge_Returns_False()
         {
-            IRange<short> range = new Int16Range(0, 100);
+            IRange<short> range = 0.ToInt16Range(100);
             var sut = new CompareInt16Range();
             Assert.False(sut.IsInRange(-1, range));
         }

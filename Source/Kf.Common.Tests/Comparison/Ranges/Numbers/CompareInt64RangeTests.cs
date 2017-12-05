@@ -16,7 +16,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_In_Range_Returns_True()
         {
-            IRange<long> range = new Int64Range(0, 100);
+            IRange<long> range = 0L.ToRange(100);
             var sut = new CompareInt64Range();
             Assert.True(sut.IsInRange(10, range));
         }
@@ -24,7 +24,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_In_Range_On_Edge_With_Minimum_Excluded_Returns_True()
         {
-            IRange<long> range = new Int64Range(0, 100, RangeComparisonOptions.Create().WithMinimumExcluded());
+            IRange<long> range = 0L.ToRange(100, RangeComparisonOptions.Create().WithMinimumExcluded());
             var sut = new CompareInt64Range();
             Assert.True(sut.IsInRange(1, range));            
         }
@@ -32,7 +32,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_In_Range_On_Edge_With_Maximum_Excluded_Returns_True()
         {                        
-            IRange<long> range = new Int64Range(0, 100, RangeComparisonOptions.Create().WithMaximumExcluded());
+            IRange<long> range = 0L.ToRange(100, RangeComparisonOptions.Create().WithMaximumExcluded());
             var sut = new CompareInt64Range();
             Assert.True(sut.IsInRange(99, range));            
         }
@@ -40,7 +40,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_In_Range_On_Edge_Returns_True()
         {
-            IRange<long> range = new Int64Range(0, 100);
+            IRange<long> range = 0L.ToRange(100);
             var sut = new CompareInt64Range();
             Assert.True(sut.IsInRange(0, range));                       
         }
@@ -48,7 +48,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_Not_In_Range_Returns_False()
         {
-            IRange<long> range = new Int64Range(0, 100);
+            IRange<long> range = 0.ToInt64Range(100);
             var sut = new CompareInt64Range();
             Assert.False(sut.IsInRange(-5, range));            
         }
@@ -56,7 +56,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_Not_In_Range_On_Edge_With_Minimum_Excluded_Returns_False()
         {            
-            IRange<long> range = new Int64Range(0, 100, RangeComparisonOptions.Create().WithMinimumExcluded());
+            IRange<long> range = 0L.ToRange(100, RangeComparisonOptions.Create().WithMinimumExcluded());
             var sut = new CompareInt64Range();
             Assert.False(sut.IsInRange(0, range));
         }
@@ -64,7 +64,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_Not_In_Range_On_Edge_With_Maximum_Excluded_Returns_False()
         {
-            IRange<long> range = new Int64Range(0, 100, RangeComparisonOptions.Create().WithMaximumExcluded());
+            IRange<long> range = 0L.ToRange(100, RangeComparisonOptions.Create().WithMaximumExcluded());
             var sut = new CompareInt64Range();
             Assert.False(sut.IsInRange(100, range));            
         }
@@ -72,7 +72,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void IsInRange_With_Value_Not_In_Range_On_Edge_Returns_False()
         {
-            IRange<long> range = new Int64Range(0, 100);
+            IRange<long> range = 0L.ToRange(100);
             var sut = new CompareInt64Range();
             Assert.False(sut.IsInRange(-1, range));
         }

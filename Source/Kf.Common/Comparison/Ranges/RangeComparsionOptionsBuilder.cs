@@ -7,8 +7,8 @@ namespace Kf.Common.Comparison.Ranges
         : Builder<RangeComparisonOptions, RangeComparisonOptionsBuilder>
     {        
         public static implicit operator RangeComparisonOptions(
-            RangeComparisonOptionsBuilder rangeComparisonOptionsBuilder)
-            => rangeComparisonOptionsBuilder.Build();
+            RangeComparisonOptionsBuilder rangeComparisonOptionsBuilder
+        ) => rangeComparisonOptionsBuilder.Build();
 
         public RangeComparisonOptionsBuilder WithMinimumIncluded()
             => With(x => x.IsMinimumIncluded, true);

@@ -13,26 +13,26 @@ namespace Kf.Common.Tests.Comparison.Ranges.Numbers
         [Fact]
         public void Implements_IRange_interface()
             => AssertExtensions.ImplementsInterface<IRange<int>>(
-                new Int32Range(0, 1)
+                0.ToRange(1)
             );
 
         private static IEnumerable<object[]> AsEnumerableTestData() {            
             return new List<object[]> {
 
                 new object[] {
-                    new Int32Range(0, 0), new [] { 0 }
+                    0.ToRange(0), new [] { 0 }
                 },
                 new object[] {
-                    new Int32Range(-60, -60), new [] { -60 }
+                    (-60).ToRange(-60), new [] { -60 }
                 },
 
                 new object[] {
-                    new Int32Range(0, 10),
+                    0.ToRange(10),
                     new [] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
                 },
 
                 new object[] {
-                    new Int32Range(-5, 5),                    
+                    (-5).ToRange(5),
                     new [] { -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 }
                 },                
             };            
