@@ -44,6 +44,9 @@ namespace Kf.Common.Tests.Defensive.BuilderPattern
 
     public class FakeObjectBuilder : Builder<FakeObject, FakeObjectBuilder>
     {
-        // Define your own classes / builder methods here in addition to the "With" method
+        // You can define your builder methods here in addition to the "With" method that's provided with the base class.
+        // E.g.: WithInt64ToZero()
+        public FakeObjectBuilder WithInt64ToZero()
+            => With(x => x.PrivateSetterInt64, 0);
     }
 }
