@@ -8,12 +8,12 @@ namespace Kf.Common.Randomization
     /// <summary>
     /// Implementation of <see cref="IRandom{T}"/> that wraps <see cref="System.Random"/>.    
     /// </summary>    
-    public sealed class Int32Random : IRandom<int>
+    public sealed class SimpleInt32Random : IRandom<int>
     {        
         private static readonly Random _staticRandom = new Random();
         private readonly IPossible<Random> _possibleRandom;
 
-        public Int32Random(int? seed = null)
+        public SimpleInt32Random(int? seed = null)
             => _possibleRandom = 
                 seed.HasValue
                     ? new Random(seed.Value).ToPossible()

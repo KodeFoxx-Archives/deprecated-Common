@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Kf.Common.Comparison.Ranges
 {
     /// <summary>
     /// Abstract base implementation of <see cref="IRange{T}"/>.
     /// </summary>    
-    public abstract class Range<T> : IRange<T>
+    public class Range<T> : IRange<T>
     {
         /// <summary>
         /// The minimum value of the range.
@@ -28,7 +29,7 @@ namespace Kf.Common.Comparison.Ranges
         /// <param name="minimum">The minimum value.</param>
         /// <param name="maximum">The maximum value</param>
         /// <param name="rangeComparisonOptions">The comparer options, where the default included both minimum and maximum.</param>
-        protected Range(T minimum, T maximum, RangeComparisonOptions rangeComparisonOptions = null)
+        public Range(T minimum, T maximum, RangeComparisonOptions rangeComparisonOptions = null)
         {
             Minimum = minimum;
             Maximum = maximum;
@@ -43,6 +44,7 @@ namespace Kf.Common.Comparison.Ranges
         /// Lists all values of <see cref="IRange{T}"/> in an <see cref="IEnumerable{T}"/>
         /// </summary>
         /// <returns>an <see cref="IEnumerable{T}"/></returns>
-        public abstract IEnumerable<T> AsEnumerable();
+        public virtual IEnumerable<T> AsEnumerable()
+            => Enumerable.Empty<T>();
     }
 }
