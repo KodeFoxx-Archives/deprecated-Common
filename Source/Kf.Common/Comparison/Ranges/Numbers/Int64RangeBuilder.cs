@@ -6,8 +6,8 @@ namespace Kf.Common.Comparison.Ranges.Numbers
         : Builder<Int64Range, Int64RangeBuilder>
     {
         public static implicit operator Int64Range(
-            Int64RangeBuilder int16RangeBuilder
-        ) => int16RangeBuilder.Build();
+            Int64RangeBuilder int64RangeBuilder
+        ) => int64RangeBuilder.Build();
 
         public Int64RangeBuilder WithMinimum(long minimum)
             => With(x => x.Minimum, minimum);

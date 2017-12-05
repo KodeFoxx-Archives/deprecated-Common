@@ -57,11 +57,10 @@ namespace Kf.Common.Tests.Comparison.Ranges.Time
         private DateTimeRange GetOctober11th1985Range(
             RangeComparisonOptions rangeComparisonOptions = null)
         {
-            return new DateTimeRange(
-                minimum: new DateTime(1985, 10, 11), 
-                maximum: new DateTime(1986, 10, 11),
-                rangeComparisonOptions: rangeComparisonOptions
-            );
+            return DateTimeRange.Create()
+                .WithMinimum(new DateTime(1985, 10, 11))
+                .WithMaximum(new DateTime(1986, 10, 11))
+                .WithRangeComparsionOptions(rangeComparisonOptions);
         }
     }
 }

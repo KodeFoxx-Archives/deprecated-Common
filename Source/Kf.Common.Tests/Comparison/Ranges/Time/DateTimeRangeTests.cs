@@ -14,7 +14,7 @@ namespace Kf.Common.Tests.Comparison.Ranges.Time
         [Fact]
         public void Implements_IRange_interface()
             => AssertExtensions.ImplementsInterface<IRange<DateTime>>(
-                new DateTimeRange(DateTime.MinValue, DateTime.MaxValue)
+                DateTime.MinValue.ToRange(DateTime.MaxValue)
             );
 
         private static IEnumerable<object[]> AsEnumerableTestData()
@@ -22,10 +22,10 @@ namespace Kf.Common.Tests.Comparison.Ranges.Time
             return new List<object[]> {
 
                 new object[] {
-                    new DateTimeRange(
-                        new DateTime(1985, 10, 11),
-                        new DateTime(1985, 10, 12)
-                    ),
+                    DateTimeRange.Create()
+                        .WithMinimum(new DateTime(1985, 10, 11))
+                        .WithMaximum(new DateTime(1985, 10, 12))
+                        .Build(),
                     2
                 },
             };

@@ -5,9 +5,12 @@ namespace Kf.Common.Comparison.Ranges.Time
 {
     public sealed class DateTimeRange : Range<DateTime>
     {
-        public DateTimeRange(
+        public static DateTimeRangeBuilder Create() => new DateTimeRangeBuilder();
+
+        internal DateTimeRange(
             DateTime minimum, DateTime maximum, RangeComparisonOptions rangeComparisonOptions = null) 
             : base(minimum, maximum, rangeComparisonOptions) { }
+        private DateTimeRange() : this(DateTime.MinValue, DateTime.MaxValue) { }
 
         public override IEnumerable<DateTime> AsEnumerable()
         {
