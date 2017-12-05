@@ -15,7 +15,7 @@ namespace Kf.Common.Comparison.Ranges.Numbers
         public Int64RangeBuilder WithMaximum(long maximum)
             => With(x => x.Maximum, maximum);
 
-        public Int64RangeBuilder WithRangeComparsionOptions(RangeComparisonOptions rangeComparisonOptions)
-            => With(x => x.RangeComparisonOptions, rangeComparisonOptions);
+        public Int64RangeBuilder WithRangeComparsionOptions(RangeComparisonOptions rangeComparisonOptions = null)
+            => With(x => x.RangeComparisonOptions, rangeComparisonOptions ?? RangeComparisonOptions.Create());
     }
 }

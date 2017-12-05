@@ -7,7 +7,7 @@ namespace Kf.Common.Comparison.Ranges.Numbers
     {
         public static implicit operator Int16Range(
             Int16RangeBuilder int16RangeBuilder
-        ) => int16RangeBuilder.Build();
+        ) => int16RangeBuilder.Build();        
 
         public Int16RangeBuilder WithMinimum(short minimum)
             => With(x => x.Minimum, minimum);
@@ -15,7 +15,7 @@ namespace Kf.Common.Comparison.Ranges.Numbers
         public Int16RangeBuilder WithMaximum(short maximum)
             => With(x => x.Maximum, maximum);
 
-        public Int16RangeBuilder WithRangeComparsionOptions(RangeComparisonOptions rangeComparisonOptions)
-            => With(x => x.RangeComparisonOptions, rangeComparisonOptions);
+        public Int16RangeBuilder WithRangeComparsionOptions(RangeComparisonOptions rangeComparisonOptions = null)
+            => With(x => x.RangeComparisonOptions, rangeComparisonOptions ?? RangeComparisonOptions.Create());
     }
 }

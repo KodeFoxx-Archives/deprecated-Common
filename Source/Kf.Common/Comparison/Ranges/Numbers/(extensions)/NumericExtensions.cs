@@ -4,22 +4,42 @@
     {
         public static IRange<short> ToRange(
             this short minimum, short maximum, RangeComparisonOptions rangeComparisonOptions = null
-        ) => new Int16Range(minimum, maximum, rangeComparisonOptions);
+        ) => Int16Range.Create()
+                .WithMinimum(minimum)
+                .WithMaximum(maximum)
+                .WithRangeComparsionOptions(rangeComparisonOptions)
+                .Build();
 
         public static IRange<int> ToRange(
             this int minimum, int maximum, RangeComparisonOptions rangeComparisonOptions = null
-        ) => new Int32Range(minimum, maximum, rangeComparisonOptions);
+        ) => Int32Range.Create()
+                .WithMinimum(minimum)
+                .WithMaximum(maximum)
+                .WithRangeComparsionOptions(rangeComparisonOptions)
+                .Build();
 
         public static IRange<long> ToRange(
             this long minimum, long maximum, RangeComparisonOptions rangeComparisonOptions = null            
-        ) => new Int64Range(minimum, maximum, rangeComparisonOptions);
+        ) => Int64Range.Create()
+                .WithMinimum(minimum)
+                .WithMaximum(maximum)
+                .WithRangeComparsionOptions(rangeComparisonOptions)
+                .Build();
 
         public static IRange<short> ToInt16Range(
             this int minimum, short maximum, RangeComparisonOptions rangeComparisonOptions = null
-        ) => new Int16Range((short)minimum, maximum, rangeComparisonOptions);
+        ) => Int16Range.Create()
+                .WithMinimum((short)minimum)
+                .WithMaximum(maximum)
+                .WithRangeComparsionOptions(rangeComparisonOptions)
+                .Build();
 
         public static IRange<long> ToInt64Range(
             this int minimum, long maximum, RangeComparisonOptions rangeComparisonOptions = null
-        ) => new Int64Range(minimum, maximum, rangeComparisonOptions);
+        ) => Int64Range.Create()
+                .WithMinimum(minimum)
+                .WithMaximum(maximum)
+                .WithRangeComparsionOptions(rangeComparisonOptions)
+                .Build();
     }
 }
