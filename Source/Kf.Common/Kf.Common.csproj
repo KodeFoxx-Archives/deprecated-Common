@@ -11,7 +11,7 @@
     <Description>Because I don't like writing things twice: common functions, utilities, helpers, classes and patterns used in KodeFoxx projects.</Description>
     <Company>KodeFoxx</Company>
     <Authors>Yves Schelpe (KodeFoxx)</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <AssemblyVersion>0.1.1.0</AssemblyVersion>
     <FileVersion>0.1.1.0</FileVersion>
     <RepositoryType>git</RepositoryType>
