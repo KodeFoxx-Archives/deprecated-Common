@@ -22,6 +22,7 @@
   - IPossible&lt;T&gt;, Provides a type Possible&lt;T&gt; that abstracts away null.
      More info at https://github.com/KodeFoxx/Common/wiki/Defensive-coding:-Possible-of-T
   - IBuilder with Builder&lt;T&gt; and SafeBuilder&lt;T&gt; to provide a functinality of easily creating builders.</PackageReleaseNotes>
+    <Product>KodeFoxx Common (Kf.Common)</Product>
   </PropertyGroup>
 
 </Project>
