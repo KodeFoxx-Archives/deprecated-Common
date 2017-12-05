@@ -12,17 +12,14 @@
     <Company>KodeFoxx</Company>
     <Authors>Yves Schelpe (KodeFoxx)</Authors>
     <Version>0.1.0</Version>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
-    <FileVersion>0.1.0.0</FileVersion>
+    <AssemblyVersion>0.1.1.0</AssemblyVersion>
+    <FileVersion>0.1.1.0</FileVersion>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Kf.Common version 0.1.0.0
-- Comparison tools:
-  - IRange&lt;T&gt; with DateTimeRange, Int16Range, Int32Range and Int64Range
-- Defensive coding tools:
-  - IPossible&lt;T&gt;, Provides a type Possible&lt;T&gt; that abstracts away null.
-     More info at https://github.com/KodeFoxx/Common/wiki/Defensive-coding:-Possible-of-T
-  - IBuilder with Builder&lt;T&gt; and SafeBuilder&lt;T&gt; to provide a functinality of easily creating builders.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The release notes are available on https://github.com/KodeFoxx/Common/releases/latest
+- Documentation is available on https://github.com/KodeFoxx/Common/wiki as well as in the tests written for the project at https://github.com/KodeFoxx/Common/tree/master/Source/Kf.Common.Tests</PackageReleaseNotes>
     <Product>KodeFoxx Common (Kf.Common)</Product>
+    <PackageTags>utilities helpers patterns extensions</PackageTags>
+    <NeutralLanguage>English</NeutralLanguage>
   </PropertyGroup>
 
 </Project>
