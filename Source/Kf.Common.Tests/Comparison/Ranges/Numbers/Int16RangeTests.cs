@@ -1,13 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Kf.Common.Comparison.Ranges;
 using Kf.Common.Comparison.Ranges.Numbers;
+using Kf.Common.Comparison.Ranges.Time;
+using Kf.Common.Tests.Infrastructure;
 using Xunit;
 
 namespace Kf.Common.Tests.Comparison.Ranges.Numbers
 {
     public class Int16RangeTests
     {
+        [Fact]
+        public void Implements_IRange_interface()
+            => AssertExtensions.ImplementsInterface<IRange<short>>(
+                new Int16Range(0, 1)
+            );
+
         private static IEnumerable<object[]> AsEnumerableTestData() {            
             return new List<object[]> {
 

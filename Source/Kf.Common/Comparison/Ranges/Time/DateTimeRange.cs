@@ -12,10 +12,10 @@ namespace Kf.Common.Comparison.Ranges.Time
         public override IEnumerable<DateTime> AsEnumerable()
         {
             var currentValue = Minimum;
-            while (Minimum > Maximum)
+            while (currentValue <= Maximum)
             {
                 yield return currentValue;
-                currentValue.AddMilliseconds(1);
+                currentValue = currentValue.AddMilliseconds(1);
             }
         }
     }

@@ -1,11 +1,18 @@
 ﻿using Kf.Common.Comparison.Ranges;
 using Kf.Common.Comparison.Ranges.Numbers;
+using Kf.Common.Tests.Infrastructure;
 using Xunit;
 
 namespace Kf.Common.Tests.Comparison.Ranges.Numbers
 {
     public class CompareInt64RangeTests
     {
+        [Fact]
+        public void Implements_IRange_interface()
+            => AssertExtensions.ImplementsInterface<ICompareRange<long>>(
+                new CompareInt64Range()
+            );
+
         [Fact]
         public void IsInRange_With_Value_In_Range_Returns_True()
         {

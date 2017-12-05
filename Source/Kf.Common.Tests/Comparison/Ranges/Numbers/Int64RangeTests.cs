@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Kf.Common.Comparison.Ranges;
 using Kf.Common.Comparison.Ranges.Numbers;
+using Kf.Common.Tests.Infrastructure;
 using Xunit;
 
 namespace Kf.Common.Tests.Comparison.Ranges.Numbers
 {
     public class Int64RangeTests
     {
+        [Fact]
+        public void Implements_IRange_interface()
+            => AssertExtensions.ImplementsInterface<IRange<long>>(
+                new Int64Range(0, 1)
+            );
+
         private static IEnumerable<object[]> AsEnumerableTestData() {            
             return new List<object[]> {
 
