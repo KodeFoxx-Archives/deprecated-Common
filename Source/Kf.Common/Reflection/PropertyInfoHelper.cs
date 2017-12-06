@@ -7,7 +7,8 @@ namespace Kf.Common.Reflection
 {
     public static class PropertyInfoHelper
     {
-        public static IPossible<PropertyInfo> GetPropertyInfo<TObject, TProperty>(Expression<Func<TObject, TProperty>> propertySelector)
+        public static IPossible<PropertyInfo> GetPropertyInfo<TObject, TProperty>(
+            Expression<Func<TObject, TProperty>> propertySelector)
         {
             PropertyInfo propertyInfo = null;
 
@@ -19,5 +20,15 @@ namespace Kf.Common.Reflection
 
             return propertyInfo.ToPossible();
         }
+
+        public static IPossible<string> GetPropertyName<TObject, TProperty>(
+            Expression<Func<TObject, TProperty>> propertySelector
+        ) => GetPropertyInfo(propertySelector)
+                .Map(pi => pi.Name);
+
+        public static string GetPropertyNameOrEmptyString<TObject, TProperty>(
+            Expression<Func<TObject, TProperty>> propertySelector
+        ) => GetPropertyName(propertySelector)            
+                .GetValue(String.Empty);
     }
 }

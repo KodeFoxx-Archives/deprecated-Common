@@ -20,29 +20,37 @@ namespace Kf.Common.Defensive.BuilderPattern
         }
 
         public bool CanBuild()
-            => (GetBuildErrors().ToList() ?? new List<string>()).Count == 0;
+            => (GetBuildErrors()?.ToList() ?? new List<string>()).Count == 0;
         public abstract IEnumerable<string> GetBuildErrors();
 
         protected bool HasValues()
-            => _values != null || _values.Any();
+            => _values != null && _values.Any();
 
-        protected IPossible<TValue> GetValue<TValue, TProperty>(
-            Expression<Func<TObject, TProperty>> propertySelector
-        ) => HasValues()
+        protected bool IsPropertySet<TValue>(Expression<Func<TObject, TValue>> propertySelector) {
+            if (!HasValues()) return false;
+            var propertyName = PropertyInfoHelper.GetPropertyNameOrEmptyString(propertySelector);
+            return _values.Keys
+                .Any(pi => pi.Name == propertyName);
+        }            
+
+        protected IPossible<TValue> GetValue<TValue>(
+            Expression<Func<TObject, TValue>> propertySelector
+        ) => HasValues() && IsPropertySet(propertySelector)
                 ? _values
-                    .Where(kvp => kvp.Key.Name == PropertyInfoHelper
-                                                    .GetPropertyInfo(propertySelector)
-                                                    .Map(pi => pi.Name)
-                                                    .GetValue(String.Empty)
-                    )
+                    .Where(kvp => kvp.Key.Name == PropertyInfoHelper.GetPropertyNameOrEmptyString(propertySelector))
                     .Select(kvp => (TValue)kvp.Value)
                     .FirstOrNoValue()
-                : Possible.NoValue<TValue>();
+                : Possible.NoValue<TValue>();        
 
-        protected bool TryGetValue<TValue, TProperty>(
-            Expression<Func<TObject, TProperty>> propertySelector, out TValue value
+        protected bool TryGetValue<TValue>(
+            Expression<Func<TObject, TValue>> propertySelector, out TValue value
         ) {
-            value = GetValue<TValue, TProperty>(propertySelector).GetValue(null);
+            if (!IsPropertySet(propertySelector)) {
+                value = default(TValue);
+                return false;                
+            }
+
+            value = GetValue(propertySelector).GetValue(() => default(TValue));            
             return value != null;
         }
     }
