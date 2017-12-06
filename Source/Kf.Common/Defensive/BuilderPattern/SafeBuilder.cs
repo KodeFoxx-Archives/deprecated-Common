@@ -23,9 +23,12 @@ namespace Kf.Common.Defensive.BuilderPattern
             => (GetBuildErrors().ToList() ?? new List<string>()).Count == 0;
         public abstract IEnumerable<string> GetBuildErrors();
 
+        protected bool HasValues()
+            => _values != null || _values.Any();
+
         protected IPossible<TValue> GetValue<TValue, TProperty>(
             Expression<Func<TObject, TProperty>> propertySelector
-        ) => _values == null || !_values.Any()
+        ) => HasValues()
                 ? _values
                     .Where(kvp => kvp.Key.Name == PropertyInfoHelper
                                                     .GetPropertyInfo(propertySelector)
