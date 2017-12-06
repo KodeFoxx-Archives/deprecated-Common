@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Kf.Common.Reflection;
 
 namespace Kf.Common.Defensive.BuilderPattern
 {
@@ -45,20 +46,10 @@ namespace Kf.Common.Defensive.BuilderPattern
         }        
 
         private PropertyInfo GetPropertyInfo<TProperty>(Expression<Func<TObject, TProperty>> propertySelector) {
-            PropertyInfo propertyInfo = null;
-
-            if (propertySelector.Body is MemberExpression memberExpression)
-                propertyInfo = memberExpression.Member as PropertyInfo;
-
-            if (propertySelector.Body is UnaryExpression unaryExpression)
-                propertyInfo = (unaryExpression.Operand as MemberExpression)?.Member as PropertyInfo;
-
-            if(propertyInfo == null)
-                throw new CanNotBuildException<TBuilder>(
-                    $"Could not extract property from given propertySelector '{propertySelector}'."
-                );
-
-            return propertyInfo;
+            var propertyInfo = PropertyInfoHelper.GetPropertyInfo(propertySelector);                            
+            return propertyInfo.GetValue(() => throw new CanNotBuildException<TBuilder>(
+                $"Could not extract property from given propertySelector '{propertySelector}'."
+            ));
         }
 
         private TObject GetInsance()            
